@@ -13,14 +13,14 @@ public class NettyRpcServiceParser implements BeanDefinitionParser {
     public BeanDefinition parse(Element element, ParserContext parserContext) {
         String interfaceName = element.getAttribute("interfaceName");
         String ref = element.getAttribute("ref");
-        String filter = element.getAttribute("filter");
+        String filter = element.getAttribute("com/tingyun/filter");
 
         RootBeanDefinition rootBeanDefinition = new RootBeanDefinition();
         rootBeanDefinition.setBeanClass(NettyRpcService.class);
         rootBeanDefinition.setLazyInit(false);
         rootBeanDefinition.getPropertyValues().addPropertyValue("interface", interfaceName);
         rootBeanDefinition.getPropertyValues().addPropertyValue("ref", ref);
-        rootBeanDefinition.getPropertyValues().addPropertyValue("filter", filter);
+        rootBeanDefinition.getPropertyValues().addPropertyValue("com/tingyun/filter", filter);
 
         parserContext.getRegistry().registerBeanDefinition(interfaceName, rootBeanDefinition);
         return rootBeanDefinition;
